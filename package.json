@@ -1,0 +1,30 @@
+{
+  "name": "namaste",
+  "version": "1.0.0",
+  "description": "this is namaste react",
+  "keywords": [],
+  "homepage": "https://github.com/sateeshasb/react-namaste#readme",
+  "bugs": {
+    "url": "https://github.com/sateeshasb/react-namaste/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sateeshasb/react-namaste.git"
+  },
+  "license": "ISC",
+  "author": "sateesha",
+  "type": "commonjs",
+  "scripts": {
+    "test": "jest"
+  },
+  "devDependencies": {
+    "parcel": "^2.15.4"
+  },
+  "dependencies": {
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
+  },
+  "browserslist":[
+    "last 2 versions"
+  ]
+}
