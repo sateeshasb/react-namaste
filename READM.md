@@ -17,3 +17,22 @@
 -HTTPs
 -Tree shaking - remove unused code
 -Different dev prod bundles
+
+
+ther two types import and export 
+- defult export/import
+
+-export defult component;
+import component fromm "path"
+
+
+- Named export/import 
+ 
+ export const component
+ impport {component} from "path";
+
+
+ #React Hooks
+ (Noraml JS utility function)
+ -usestate()
+ -useEffect()
