@@ -12,7 +12,7 @@ const RestaurantCard = ({ reData }) => {
     cuisines,
     avgRating,
     costForTwo,
-    deliveryTime,
+    sla,
   } = reData.info;
 
   return (
@@ -26,7 +26,7 @@ const RestaurantCard = ({ reData }) => {
       <h4>{cuisines?.join(", ")}</h4>
       <h4>{avgRating}</h4>
       <h4>{costForTwo}</h4>
-      <h4>{deliveryTime}</h4>
+      <h4>{sla?.slaString}</h4>
     </div>
   );
 };
