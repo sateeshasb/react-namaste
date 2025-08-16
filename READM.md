@@ -32,7 +32,11 @@ import component fromm "path"
  impport {component} from "path";
 
 
- #React Hooks
+ # React Hooks
  (Noraml JS utility function)
  -usestate()
  -useEffect()
+
+ # 2 Routing in web apps
+ -client Side routing
+ -server Side routing

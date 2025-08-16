@@ -1,34 +1,27 @@
 import RestaurantCard from "./RestaurantCard";
 import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
+import { Link } from "react-router-dom";
 
 const Body = () => {
   const [ListofrRestaurants, setListofrRestaurants] = useState([]);
   const [FilteredRes, setFilteredRes] = useState([]);
-
   const [searchtext, setsearchtext] = useState("");
-  console.log("body");
 
   useEffect(() => {
     fetchData();
   }, []);
 
   const fetchData = async () => {
-    const data = await fetch(
-      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=16.2034576&lng=77.3811051&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
-    );
-
+    const data = await fetch("https://swiggy-api-4c740.web.app/swiggy-api.json");
     const json = await data.json();
-    console.log(json);
-    console.log("fetched");
-    setListofrRestaurants(
-      json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
-        ?.restaurants || []
-    );
-    setFilteredRes(
-      json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
-        ?.restaurants || []
-    );
+
+    const restaurants =
+      json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants ||
+      [];
+
+    setListofrRestaurants(restaurants);
+    setFilteredRes(restaurants);
   };
 
   return ListofrRestaurants.length === 0 ? (
@@ -45,24 +38,22 @@ const Body = () => {
           />
           <button
             onClick={() => {
-              const FilteredRes = ListofrRestaurants.filter((restaurants) =>
+              const Filtered = FilteredRes.filter((restaurants) =>
                 restaurants.info.name
                   .toLowerCase()
                   .includes(searchtext.toLowerCase())
               );
-              setListofrRestaurants(FilteredRes);
+              setListofrRestaurants(Filtered);
             }}
           >
-            search
+            Search
           </button>
           <button
             className="filter-btn"
             onClick={() => {
-              //filter code
-              const filteredList = ListofrRestaurants.filter(
+              const filteredList = FilteredRes.filter(
                 (Restaurant) => Restaurant.info.avgRating > 4.3
               );
-
               setListofrRestaurants(filteredList);
             }}
           >
@@ -72,7 +63,9 @@ const Body = () => {
       </div>
       <div className="res-container">
         {ListofrRestaurants.map((Restaurant) => (
-          <RestaurantCard reData={Restaurant} key={Restaurant.info.id} />
+          <Link key={Restaurant.info.id} to={"/Restaurants/" + Restaurant.info.id}>
+            <RestaurantCard reData={Restaurant} />
+          </Link>
         ))}
       </div>
     </div>
