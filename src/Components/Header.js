@@ -7,26 +7,28 @@ const Header = () => {
   const useOnlineStatus = useActionState();
 
   return (
-    <div className="header">
+    <div className="flex justify-between  shadow-lg sm:bg-amber-500 lg:bg-green-500 ">
       <div className="logo-container">
-        <img className="logo" src={LOGO_URL} alt="logo" />
+        <img className="w-40 p-2" src={LOGO_URL} alt="logo" />
       </div>
-      <div className="nav-items">
-        <ul>
-          <li>Online Status:{useOnlineStatus ? "✅" : "✔️"}</li>
+      <div className="flex items-center">
+        <ul className="flex p-4 m-4 gap-4">
+          <li className="px-4">
+            Online Status:{useOnlineStatus ? "✅" : "✔️"}
+          </li>
           <li>
             <Link to="/">Home</Link>
           </li>
-          <li>
+          <li className="px-4">
             <Link to="/About">About us</Link>
           </li>
-          <li>
+          <li className="px-4">
             <Link to="/Contact">Contact us</Link>
           </li>
-          <li>
+          <li className="px-4">
             <Link to="/Grocery">Grocery</Link>
           </li>
-          <li>Cart</li>
+          <li className="px-4">Cart</li>
           <button
             className="login"
             onClick={() => {
